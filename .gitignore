@@ -9,3 +9,9 @@ dist/
 db.sqlite
 .idea
 .tee-cloud
+
+!packages/*/*/*.ts
+!packages/*/*.ts
+!packages/*/*/*/*.ts
+
+*.gguf
