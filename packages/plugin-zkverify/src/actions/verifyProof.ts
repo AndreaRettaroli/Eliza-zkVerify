@@ -53,6 +53,12 @@ export const executeVerificationZKVerifyAction: Action = {
     elizaLogger.info("zkVerifyService:", zkVerifyService);
     elizaLogger.info("here");
     elizaLogger.info("super!!!");
+
+    try {
+      elizaLogger.info("message:", _options);
+    } catch (e) {
+      elizaLogger.error("error:", e);
+    }
     // elizaLogger.info("🚀 ~ message:", message);
     // elizaLogger.info("🚀 ~ state:", state);
     // elizaLogger.info("🚀 ~ _options:", _options);
@@ -62,9 +68,25 @@ export const executeVerificationZKVerifyAction: Action = {
       console.log("🚀 ~ exec:", exec);
       elizaLogger.info("Successfully verified the proof", exec);
       if (callback) {
-        callback({
-          text: `Successfully access this nudes`,
-        });
+        callback(
+          {
+            text: `Successfully access the zk verify private content service`,
+            
+            // attachments: [
+            //   {
+            //     id: "zk-verify-private-content-service",
+            //     url: "https://cdn.sanity.io/images/d8l6jpdh/production/7a1ffea18caefb08e1de6706241d0dce14035f1d-760x154.png?fit=max&auto=format&w=3840&q=100",
+            //     title: "ZK Verify Private Content Service",
+            //     source:
+            //       "https://cdn.sanity.io/images/d8l6jpdh/production/7a1ffea18caefb08e1de6706241d0dce14035f1d-760x154.png?fit=max&auto=format&w=3840&q=100",
+            //     description: "ZK Verify Private Content Service description",
+            //     text: "ZK Verify Private Content Service text",
+            //     contentType: "image",
+            //   },
+            // ],
+          },
+          "https://cdn.sanity.io/images/d8l6jpdh/production/7a1ffea18caefb08e1de6706241d0dce14035f1d-760x154.png?fit=max&auto=format&w=3840&q=100"
+        );
         return true;
       }
     } catch (error: any) {
