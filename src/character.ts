@@ -11,7 +11,7 @@ export const character: Character = {
   // name: "Eliza",
   plugins: [zkVerifyPlugin],
   clients: [Clients.TELEGRAM],
-  // modelProvider: ModelProviderName.OPENAI,
+  modelProvider: ModelProviderName.OPENAI,
   // settings: {
   //     secrets: {},
   //     voice: {

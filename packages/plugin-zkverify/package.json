@@ -20,7 +20,7 @@
   "dependencies": {
     "@elizaos/core": "0.1.9",
     "tsup": "8.3.5",
-    "zkverifyjs": "^0.6.0",
+    "zkverifyjs": "^0.5.0",
     "zod": "^3.22.4"
   },
   "scripts": {
