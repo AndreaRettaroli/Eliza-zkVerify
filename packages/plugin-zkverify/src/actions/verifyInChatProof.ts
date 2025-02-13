@@ -4,21 +4,30 @@ import {
   ActionExample,
   HandlerCallback,
   IAgentRuntime,
+  // IDocumentService,
   Memory,
   State,
+  ServiceType,
 } from "@elizaos/core";
 import { validateZKVerifyConfig } from "../environment.js";
 import { createZKVerifyService } from "../services.js";
-import { verifyZKProofExamples } from "../examples.js";
+import { verifyInChatZKProofExamples } from "../examples.js";
 
-export const executeVerificationZKVerifyAction: Action = {
-  name: "EXECUTE_ZK_VERIFY",
+export const executeInChatVerificationZKVerifyAction: Action = {
+  name: "IN_CHAT_EXECUTE_ZK_VERIFY",
   similes: ["ZK PROOF", "VERIFY", "VERIFICATION KEY", "PROOF"],
   description: "Verify a zk proof using zk verify",
-  validate: async (runtime: IAgentRuntime) => {
+
+  validate: async (runtime, message) => {
     await validateZKVerifyConfig(runtime);
-    return true;
+    const hasAttachment = message.content.attachments?.length > 0;
+    const supportedTypes = ["json", "txt"];
+    return (
+      hasAttachment &&
+      supportedTypes.includes(message.content.attachments[0].contentType)
+    );
   },
+
   handler: async (
     runtime: IAgentRuntime,
     message: Memory,
@@ -32,7 +41,15 @@ export const executeVerificationZKVerifyAction: Action = {
     const zkVerifyService = createZKVerifyService(config.ZKVERIFY_SIGNER_PK);
 
     try {
-      const exec = await zkVerifyService.executeVerificationWithZkVerify();
+      const attachment = message.content.attachments[0];
+
+      // TODO: review it
+      const proof = attachment.text;
+      // await runtime
+      //   .getService<IDocumentService>(ServiceType.DOCUMENT)
+      //   .processDocument(attachment);
+
+      const exec = await zkVerifyService.executeVerificationWithZkVerify(proof);
       console.log("🚀 ~ exec:", exec);
       elizaLogger.info("Successfully verified the proof", exec);
       if (callback) {
@@ -65,5 +82,5 @@ export const executeVerificationZKVerifyAction: Action = {
       return false;
     }
   },
-  examples: verifyZKProofExamples as ActionExample[][],
+  examples: verifyInChatZKProofExamples as ActionExample[][],
 } as Action;
