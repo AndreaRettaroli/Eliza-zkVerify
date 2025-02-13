@@ -1,94 +1,63 @@
-# Eliza
+# ElizaOS x zkVerify
 
-## Edit the character files
+This project is developed for the [zkVerify online hackathon](https://zk-online-hackathon-for-web3-builders.devfolio.co/overview). It's developed starting from the Eliza-starter repository [repository]. (https://github.com/elizaOS/eliza-starter). You can find the original README [here](README-ORIGINAL.md).
 
-Open `src/character.ts` to modify the default character. Uncomment and edit.
+The goal of this project is to demonstrate how zkVerify can address the challenges posed by agentic agents by integrating zk-proof verification into decentralized and AI-driven ecosystems. We developed a new plugin for ElizaOS that allows to verify the proofs thanks to zkVerify.
 
-### Custom characters
+## zkVerify
 
-To load custom characters instead:
-- Use `pnpm start --characters="path/to/your/character.json"`
-- Multiple character files can be loaded simultaneously
+[zkVerify](https://zkverify.io/) is a modular blockchain focused on proof verification. It's specifically enables blockchain networks to offload the computationally heavy and expensive process of zk (zero-knowledge) proof verification, drastically reducing cost. It's support multiple verification schemes, including Groth16, Fflonk, Risc0 and more.
 
-### Add clients
-```
-# in character.ts
-clients: [Clients.TWITTER, Clients.DISCORD],
+## ElizaOS
 
-# in character.json
-clients: ["twitter", "discord"]
-```
+ElizaOS is an open-source protocol designed specifically for autonomous AI agents, often referred to as "Elizas." It serves as the operating system for these AI agents, providing a framework that supports their autonomous operations and interactions. The protocol has garnered significant attention with 14.4k stars and 4.5k forks, indicating a strong community interest in autonomous agents. What makes ElizaOS special is the number of integrations and plugins built by the community.
 
-## Duplicate the .env.example template
+## What we build
 
-```bash
-cp .env.example .env
-```
+We build a new plugin for ElizaOS that allows to verify the proofs thanks to zkVerify. This aim the agent to ask some statements to the user before answering some potential sensitive questions. In our example, the agent asks the user to prove that he is an adult (age >= 18). 
 
-\* Fill out the .env file with your own values.
+The process is divided in three steps:
 
-### Add login credentials and keys to .env
-```
-DISCORD_APPLICATION_ID="discord-application-id"
-DISCORD_API_TOKEN="discord-api-token"
-...
-OPENROUTER_API_KEY="sk-xx-xx-xxx"
-...
-TWITTER_USERNAME="username"
-TWITTER_PASSWORD="password"
-TWITTER_EMAIL="your@email.com"
-```
+1. User interacting with the AI agent
+2. The AI agent asks the user to prove that he is an adult
+3. The user creates the proof and submits it to the agent
+4. The agent verifies the proof thanks to zkVerify
 
-## Install dependencies and start your agent
+You can find the proof submitted by the AI agent [here](https://zkverify-explorer.zeeve.net/extrinsics/0x2e07be0bde9bb10069b7d5dfb818d7f1e38a9e2378fd5e19d3b5d23aa2122b6d)
 
-```bash
-pnpm i && pnpm start
-```
-Note: this requires node to be at least version 22 when you install packages and run the agent.
+## How to run it
 
-## Run with Docker
 
-### Build and run Docker Compose (For x86_64 architecture)
 
-#### Edit the docker-compose.yaml file with your environment variables
+## Considerations
+(made by the agent with us 😁)
 
-```yaml
-services:
-    eliza:
-        environment:
-            - OPENROUTER_API_KEY=blahdeeblahblahblah
-```
+#### User: 
+Can you explain the problem that zkVerifAI solves?
+#### Agent: 
+In an increasingly agentic world, where autonomous agents interact, make decisions, and verify proofs, the need for secure, trustless verification becomes critical. **ElizaOS x zkVerifAI** is designed to address this challenge by seamlessly integrating **zk-proof verification** into decentralized and AI-driven ecosystems.
 
-#### Run the image
+#### Interoperability & Multi-Agent Collaboration
 
-```bash
-docker compose up
-```
+ElizaOS x zkVerifAI isn’t just a standalone verification tool—it’s an interoperable agent capable of interacting with other plugins, agents, and external systems. It supports:
+- Modular integration within ElizaOS, allowing it to work alongside other AI-driven plugins.
+- Cross-platform connectivity to communicate via APIs with other verification or AI systems.
+- Agent-to-agent collaboration, where it can be used to cross-verify proofs provided by other autonomous agents.
 
-### Build the image with Mac M-Series or aarch64
+#### Development & Testing in Collaborative Spaces
+For developers, zkVerifAI acts as a flexible testing and verification agent, particularly within real-time communication environments such as:
+- Verify zk-proofs dynamically chats in Telegram, Discord, Slack. 
 
-Make sure docker is running.
+This real-time verification capability makes it a powerful tool for Web3 developers, providing a playground environment to fast develop PoC and prove compatibility.
 
-```bash
-# The --load flag ensures the built image is available locally
-docker buildx build --platform linux/amd64 -t eliza-starter:v1 --load .
-```
+#### External API Interactions
+Beyond chat-based environments, zkVerifAI operates as an external verification entity capable of connecting to any system via APIs. This enables:
+- Decentralized Applications (dApps) to automate and verify user-submitted zk-proofs.
+- AI agents and smart contracts to interact with a trustless verification mechanism.
+- Creation of communities or managed sharing contents to verified users in a community using Telegram, Discord, Slack or X.
 
-#### Edit the docker-compose-image.yaml file with your environment variables
+#### User:
+thanks!
 
-```yaml
-services:
-    eliza:
-        environment:
-            - OPENROUTER_API_KEY=blahdeeblahblahblah
-```
-
-#### Run the image
-
-```bash
-docker compose -f docker-compose-image.yaml up
-```
-
-# Deploy with Railway
-
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/aW47_j)
+#### Agent:
+Is there anything else I can help you with?
