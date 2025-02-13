@@ -1,8 +1,8 @@
-// import { createRequire } from "module";
-// const require = createRequire(import.meta.url);
-// const zkverify = require("zkverifyjs");
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const zkverify = require("zkverifyjs");
 
-import * as zkverify from "zkverifyjs";
+// import * as zkverify from "zkverifyjs";
 import * as fs from "fs";
 import * as path from "path";
 import { elizaLogger } from "@elizaos/core";
@@ -186,13 +186,14 @@ export const createZKVerifyService = (account: string) => {
 
       const { transactionResult } = await session
         .registerVerificationKey()
-        .ultraplonk()
+        .groth16()
         .execute(VKEY);
       const { statementHash } = await transactionResult;
       elizaLogger.log(statementHash);
       return statementHash;
     } catch (error) {
       elizaLogger.error("Error in createVK:", error);
+      elizaLogger.error("Error message in createVK:", error.message);
       throw error;
     }
   }
