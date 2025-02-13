@@ -38,7 +38,7 @@ export const executeVerificationZKVerifyAction: Action = {
       if (callback) {
         callback(
           {
-            text: `The proof result is ${exec}. \n\n Successfully access the zk verify private content service`,
+            text: `The transaction proof result hash is ${exec.txHash}. \n\n Successfully access the zk verify private content service`,
             attachments: [
               {
                 id: "zk-verify-private-content-service",
