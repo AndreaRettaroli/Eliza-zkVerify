@@ -42,17 +42,17 @@ export const executeVerificationZKVerifyAction: Action = {
             attachments: [
               {
                 id: "zk-verify-private-content-service",
-                url: "https://cdn.sanity.io/images/d8l6jpdh/production/7a1ffea18caefb08e1de6706241d0dce14035f1d-760x154.png?fit=max&auto=format&w=3840&q=100",
+                url: "https://raw.githubusercontent.com/elizaOS/eliza/refs/heads/main/docs/static/img/eliza_banner.jpg",
                 title: "ZK Verify Private Content Service",
                 source:
-                  "https://cdn.sanity.io/images/d8l6jpdh/production/7a1ffea18caefb08e1de6706241d0dce14035f1d-760x154.png?fit=max&auto=format&w=3840&q=100",
-                description: "ZK Verify Private Content Service description",
+                  "https://raw.githubusercontent.com/elizaOS/eliza/refs/heads/main/docs/static/img/eliza_banner.jpg",
+                description: `The transaction proof result hash is ${exec.txHash}. \n\n Successfully access the zk verify private content service`,
                 text: "ZK Verify Private Content Service text",
                 contentType: "image",
               },
             ],
           },
-          "https://cdn.sanity.io/images/d8l6jpdh/production/7a1ffea18caefb08e1de6706241d0dce14035f1d-760x154.png?fit=max&auto=format&w=3840&q=100"
+          "https://raw.githubusercontent.com/elizaOS/eliza/refs/heads/main/docs/static/img/eliza_banner.jpg"
         );
         return true;
       }
