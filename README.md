@@ -10,7 +10,7 @@ The goal of this project is to demonstrate how zkVerify can address the challeng
 
 ## ElizaOS
 
-ElizaOS is an open-source protocol designed specifically for autonomous AI agents, often referred to as "Elizas." It serves as the operating system for these AI agents, providing a framework that supports their autonomous operations and interactions. The protocol has garnered significant attention with 14.4k stars and 4.5k forks, indicating a strong community interest in autonomous agents. What makes ElizaOS special is the number of integrations and plugins built by the community.
+[ElizaOS](https://github.com/elizaOS/eliza) is an open-source protocol designed specifically for autonomous AI agents, often referred to as "Elizas." It serves as the operating system for these AI agents, providing a framework that supports their autonomous operations and interactions. The protocol has garnered significant attention with 14.4k stars and 4.5k forks, indicating a strong community interest in autonomous agents. What makes ElizaOS special is the number of integrations and plugins built by the community.
 
 ## What we build
 
@@ -27,7 +27,51 @@ You can find the proof submitted by the AI agent [here](https://zkverify-explore
 
 ## How to run it
 
+1. Duplicate the .env.example template
 
+```bash
+cp .env.example .env
+```
+
+2. Add to the .env the following values:
+```
+ZKVERIFY_SIGNER_PK=<your wallet seed phrase>
+TELEGRAM_BOT_TOKEN=<your telegram bot token created>
+
+```
+3. if you want to run using openAI fill also those values on the env:
+```
+OPENAI_API_KEY=<your api key>
+USE_OPENAI_EMBEDDING=TRUE
+```
+
+Note: as default the project use Ollama for the models, however in `character.ts` you can enable openAI by removing comment from line 13 ` modelProvider: ModelProviderName.OPENAI,`
+
+4. Setup node:
+
+```bash
+nvm use --lts
+```
+
+5. Install dependencies:
+```bash
+pnpm install 
+```
+
+6. Build the plugin:
+```bash
+cd packages/plugin-zkverify
+pnpm build
+```
+
+7. Build and run the application on the main project folder:
+```bash
+pnpm build && pnpm start
+```
+
+NOTE: if you use [Ollama](https://ollama.com/) to run models locally be sure you have a good machine and a good network, otherwise it will be really slow. 
+
+You can find more information on `README-ORIGINAL.md`
 
 ## Considerations
 (made by the agent with us 😁)
