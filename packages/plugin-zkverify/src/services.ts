@@ -34,9 +34,6 @@ export const createZKVerifyService = (account: string) => {
         .start()
         .Testnet()
         .withAccount(account);
-      elizaLogger.info("prova prova");
-
-      elizaLogger.log("vkJson:", VKEY);
       elizaLogger.log("start createVK");
 
       const { transactionResult } = await session
