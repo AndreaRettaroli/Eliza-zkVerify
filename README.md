@@ -45,7 +45,7 @@ OPENAI_API_KEY=<your api key>
 USE_OPENAI_EMBEDDING=TRUE
 ```
 
-Note: as default the project use Ollama for the models, however in `character.ts` you can enable openAI by removing comment from line 13 ` modelProvider: ModelProviderName.OPENAI,`
+Note: as default the project use Ollama for the models, however in [character](src/character.ts) you can enable openAI by removing comment from line 13 ` modelProvider: ModelProviderName.OPENAI,`
 
 4. Setup node:
 
@@ -72,6 +72,8 @@ pnpm build && pnpm start
 NOTE: if you use [Ollama](https://ollama.com/) to run models locally be sure you have a good machine and a good network, otherwise it will be really slow. 
 
 You can find more information on `README-ORIGINAL.md`
+
+You can use [this html template](packages/plugin-zkverify/circuit/main.groth16.html) to generate a valid proof.
 
 ## Considerations
 (made by the agent with us 😁)
